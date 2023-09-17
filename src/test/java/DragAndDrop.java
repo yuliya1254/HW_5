@@ -18,7 +18,6 @@ public class DragAndDrop {
 
     @Test
     void dragAndDrop(){
-        //Запрограммируйте Drag&Drop с помощью Selenide.actions()
 
         //Откройте https://the-internet.herokuapp.com/drag_and_drop
         open("/drag_and_drop");
@@ -26,7 +25,10 @@ public class DragAndDrop {
         //Перенесите прямоугольник А на место В
         $("#column-a").$("header").shouldHave(text("A"));
         $("#column-b").$("header").shouldHave(text("B"));
-//
+
+        $("#column-a").dragAndDropTo("#column-b");
+
+        // не рабочий вариант
 //        Point ptB = $("#column-b").getLocation(); // Узнаем координаты Блока B
 //        int NumberXb=ptB.getX();
 //        int NumberYb=ptB.getY();
@@ -38,18 +40,17 @@ public class DragAndDrop {
 //
 //        int x = NumberXb - NumberXa; // Вычисляем разницу
 //        int y = NumberYb - NumberYa;
-
-
-        actions().moveToElement($("#column-a")).clickAndHold().moveByOffset(300, 200).release().perform();
-
-
+//
+//
+//        actions().moveToElement($("#column-a")).clickAndHold().moveByOffset(x, y).release().perform();
 
 
         //Проверьте, что прямоугольники действительно поменялись
+        $("#column-a").$("header").shouldHave(text("B"));
+        $("#column-b").$("header").shouldHave(text("A"));
 
-        //В Selenide есть команда $(element).dragAndDrop($(to-element)), проверьте работает ли тест,
-                                                       // если использовать её вместо actions()
 
-        //sleep(500);
+
     }
+
 }
