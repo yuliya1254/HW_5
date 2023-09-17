@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.DragAndDropOptions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Point;
@@ -26,7 +27,7 @@ public class DragAndDrop {
         $("#column-a").$("header").shouldHave(text("A"));
         $("#column-b").$("header").shouldHave(text("B"));
 
-        $("#column-a").dragAndDropTo("#column-b");
+        $("#column-a").dragAndDrop(DragAndDropOptions.to($("#column-b")));
 
         // не рабочий вариант
 //        Point ptB = $("#column-b").getLocation(); // Узнаем координаты Блока B
